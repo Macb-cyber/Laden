@@ -1965,6 +1965,22 @@ footer {
   font-size: 0.7rem;
 }
 
+.footer-legal {
+  display: grid;
+  max-width: 760px;
+  gap: 8px;
+}
+
+.footer-inner .legal-disclaimer {
+  color: #718b9d;
+  font-size: 0.62rem;
+  line-height: 1.6;
+}
+
+.legal-disclaimer strong {
+  color: #9db2c0;
+}
+
 @media (min-width: 620px) {
   .page-shell {
     width: min(1180px, calc(100% - 48px));
@@ -2034,7 +2050,7 @@ footer {
 
   .footer-inner {
     flex-direction: row;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
   }
 }

@@ -112,3 +112,9 @@ Vervang de voorbeeld-URL door de URL van je eigen repository.
 6. Klik op **Deploy**.
 
 Vercel publiceert de statische bestanden automatisch. Elke nieuwe push naar de hoofdbranch kan daarna automatisch worden uitgerold.
+
+## Disclaimer
+
+Alle berekeningen, tarieven, autogegevens en besparingen op de website zijn indicatief.
+Werkelijke resultaten kunnen afwijken en aan de informatie kunnen geen rechten worden
+ontleend. EV Bespaarcheck verstrekt geen financieel, juridisch of energieadvies.
