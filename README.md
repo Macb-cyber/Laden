@@ -52,6 +52,10 @@ De hoofdcalculator gebruikt een eenvoudige verdeling tussen thuisladen en snella
 bezoeker kan een herkenbare voorkeuze gebruiken of de schuif aanpassen. Snelladen wordt
 automatisch aangevuld, waardoor de laadverdeling altijd 100% is.
 
+Alle berekeningen gebruiken onbewerkte decimalen. Afronding gebeurt uitsluitend bij de
+weergave. De zichtbare kosten voor thuisladen en snelladen tellen daardoor altijd exact op
+tot de getoonde totale laadkosten.
+
 Zonne-overschot en salderen staan bewust in aparte calculators, zodat de hoofdcalculator
 overzichtelijk blijft.
 

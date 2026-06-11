@@ -274,6 +274,18 @@ function setText(element, text) {
   element.textContent = text;
 }
 
+function getDisplayedChargingCosts(results) {
+  const totalCents = Math.round(results.totalEvCost * 100);
+  const homeCents = Math.round(results.homeChargingCost * 100);
+  const fastCents = totalCents - homeCents;
+
+  return {
+    total: totalCents / 100,
+    home: homeCents / 100,
+    fast: fastCents / 100,
+  };
+}
+
 function renderEmptyState() {
   Object.values(output).forEach((element) => {
     if (element instanceof HTMLElement && !element.classList.contains("bar")) {
@@ -289,20 +301,21 @@ function renderResults(results) {
   const maxCost = Math.max(results.totalEvCost, results.yearlyFuelCost, 1);
   const evWidth = Math.max((results.totalEvCost / maxCost) * 100, 3);
   const fuelWidth = Math.max((results.yearlyFuelCost / maxCost) * 100, 3);
+  const displayedChargingCosts = getDisplayedChargingCosts(results);
 
   setText(output.costMonth, euroWhole.format(results.monthlyCost));
-  setText(output.costYear, euroWhole.format(results.totalEvCost));
+  setText(output.costYear, euroDetailed.format(displayedChargingCosts.total));
   setText(output.cost100, euroDetailed.format(results.costPer100Km));
   setText(output.fuelYear, euroWhole.format(results.yearlyFuelCost));
   setText(output.savingYear, euroWhole.format(results.yearlySaving));
   setText(output.savingMonth, euroWhole.format(results.monthlySaving));
   setText(output.kwhYear, `${wholeNumber.format(results.totalKwhWithLoss)} kWh`);
   setText(output.chargesYear, wholeNumber.format(results.chargesPerYear));
-  setText(output.homeCostYear, euroWhole.format(results.homeChargingCost));
-  setText(output.fastCostYear, euroWhole.format(results.fastChargingCost));
-  setText(output.economicTotalYear, euroWhole.format(results.totalEvCost));
+  setText(output.homeCostYear, euroDetailed.format(displayedChargingCosts.home));
+  setText(output.fastCostYear, euroDetailed.format(displayedChargingCosts.fast));
+  setText(output.economicTotalYear, euroDetailed.format(displayedChargingCosts.total));
   updateSolarInputsFromMainCalculator(results);
-  setText(output.barEvLabel, euroWhole.format(results.totalEvCost));
+  setText(output.barEvLabel, euroDetailed.format(displayedChargingCosts.total));
   setText(output.barFuelLabel, euroWhole.format(results.yearlyFuelCost));
   setText(output.heroSaving, euroWhole.format(results.yearlySaving));
 

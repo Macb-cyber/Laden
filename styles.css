@@ -1149,6 +1149,12 @@ strong {
   background: var(--green-100);
 }
 
+.cost-consistency-note {
+  margin: 11px 0 0;
+  color: var(--muted);
+  font-size: 0.64rem;
+}
+
 .standalone-calculator-layout {
   display: grid;
   gap: 18px;
