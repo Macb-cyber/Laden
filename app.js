@@ -302,9 +302,10 @@ function renderResults(results) {
   const evWidth = Math.max((results.totalEvCost / maxCost) * 100, 3);
   const fuelWidth = Math.max((results.yearlyFuelCost / maxCost) * 100, 3);
   const displayedChargingCosts = getDisplayedChargingCosts(results);
+  const displayedTotalEvCost = displayedChargingCosts.total;
 
   setText(output.costMonth, euroWhole.format(results.monthlyCost));
-  setText(output.costYear, euroDetailed.format(displayedChargingCosts.total));
+  setText(output.costYear, euroDetailed.format(displayedTotalEvCost));
   setText(output.cost100, euroDetailed.format(results.costPer100Km));
   setText(output.fuelYear, euroWhole.format(results.yearlyFuelCost));
   setText(output.savingYear, euroWhole.format(results.yearlySaving));
@@ -313,9 +314,9 @@ function renderResults(results) {
   setText(output.chargesYear, wholeNumber.format(results.chargesPerYear));
   setText(output.homeCostYear, euroDetailed.format(displayedChargingCosts.home));
   setText(output.fastCostYear, euroDetailed.format(displayedChargingCosts.fast));
-  setText(output.economicTotalYear, euroDetailed.format(displayedChargingCosts.total));
+  setText(output.economicTotalYear, euroDetailed.format(displayedTotalEvCost));
   updateSolarInputsFromMainCalculator(results);
-  setText(output.barEvLabel, euroDetailed.format(displayedChargingCosts.total));
+  setText(output.barEvLabel, euroDetailed.format(displayedTotalEvCost));
   setText(output.barFuelLabel, euroWhole.format(results.yearlyFuelCost));
   setText(output.heroSaving, euroWhole.format(results.yearlySaving));
 
@@ -331,7 +332,7 @@ function renderResults(results) {
 
   setText(
     output.conclusionText,
-    `Op basis van jouw invoer kost elektrisch rijden ongeveer ${euroWhole.format(results.monthlyCost)} per maand. ${comparisonText}`,
+    `Op basis van jouw invoer kost elektrisch rijden ${euroDetailed.format(displayedTotalEvCost)} per jaar, ongeveer ${euroWhole.format(results.monthlyCost)} per maand. ${comparisonText}`,
   );
 }
 
