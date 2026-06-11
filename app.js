@@ -173,7 +173,6 @@ const fields = {
 };
 
 const output = {
-  heroSaving: document.querySelector("#hero-saving"),
   costMonth: document.querySelector("#cost-month"),
   costYear: document.querySelector("#cost-year"),
   cost100: document.querySelector("#cost-100"),
@@ -345,7 +344,6 @@ function renderResults(results) {
   updateSolarInputsFromMainCalculator(results);
   setText(output.barEvLabel, euroWhole.format(displayedTotalEvCost));
   setText(output.barFuelLabel, euroWhole.format(results.yearlyFuelCost));
-  setText(output.heroSaving, euroWhole.format(results.yearlySaving));
 
   output.barEv.style.width = `${evWidth}%`;
   output.barFuel.style.width = `${fuelWidth}%`;
