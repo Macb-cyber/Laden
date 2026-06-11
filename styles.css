@@ -850,6 +850,17 @@ strong {
   line-height: 1.6;
 }
 
+.vehicle-database-status {
+  display: inline-flex;
+  margin: 9px 0 0;
+  padding: 4px 8px;
+  color: #167653;
+  background: var(--green-100);
+  border-radius: 99px;
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
 .car-data-notice {
   margin: 14px 0 0;
   padding: 13px 14px;
