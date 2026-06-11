@@ -8,16 +8,16 @@ De website berekent live:
 - benzinekosten per jaar;
 - besparing ten opzichte van benzine;
 - jaarlijks stroomverbruik inclusief laadverlies;
-- een schatting van het aantal laadbeurten per jaar.
-- het effect van laden met zonne-overschot;
-- werkelijke bankkosten en gemiste terugleververgoeding;
-- het verschil tussen 2026 met salderen en 2027 zonder salderen.
+- een schatting van het aantal laadbeurten per jaar;
 - hoeveel kilometer de auto op de jaarlijkse opbrengst van zonnepanelen kan rijden;
-- het verschil tussen werkelijke uitgaven en economische kosten van zonneladen.
+- het totale geïnstalleerde vermogen van de zonnepanelen.
 
 Bezoekers kunnen een elektrische auto uit de ingebouwde lokale autodatabase kiezen. Merk,
 model en uitvoering worden stap voor stap geselecteerd, waarna verbruik en accucapaciteit
 automatisch worden ingevuld. Deze waarden blijven handmatig aanpasbaar.
+
+De database bevat meer dan 140 uitvoeringen, waaronder populaire Nederlandse EV's van
+Tesla, Kia, Volkswagen, Volvo, Renault, Skoda, Ford, Cupra, BYD, XPeng en Leapmotor.
 
 Staat een auto niet in de lijst, dan kan de bezoeker de autonaam, het model, de uitvoering,
 het verbruik en de accucapaciteit zelf invoeren.
@@ -53,11 +53,8 @@ bezoeker kan een herkenbare voorkeuze gebruiken of de schuif aanpassen. Snellade
 automatisch aangevuld, waardoor de laadverdeling altijd 100% is.
 
 Alle berekeningen gebruiken onbewerkte decimalen. Afronding gebeurt uitsluitend bij de
-weergave. De zichtbare kosten voor thuisladen en snelladen tellen daardoor altijd exact op
-tot de getoonde totale laadkosten.
-
-Zonne-overschot en salderen staan bewust in aparte calculators, zodat de hoofdcalculator
-overzichtelijk blijft.
+weergave naar hele euro's. De zichtbare kosten voor thuisladen en snelladen tellen daardoor
+altijd exact op tot de getoonde totale laadkosten.
 
 De website bevat ook een aparte zonnepanelen-naar-rijbereikcalculator.
 
@@ -68,10 +65,10 @@ opbrengst en het autoverbruik worden als rustige aannames weergegeven.
 
 ### Standaardtarieven aanpassen
 
-De standaardwaarde voor de thuisstroomprijs staat in `app.js` in het object `defaults`.
-Pas `homePrice` aan voor de standaard stroomprijs. De terugleververgoeding staat alleen in
-de aparte zonne- en salderingscalculators; pas daarvoor de bijbehorende `value`-attributen
-in `index.html` aan.
+De standaardwaarden voor tarieven staan in `app.js` in het object `defaults`. Pas
+`homePrice`, `fastPrice` en `fuelPrice` aan om de standaardtarieven te wijzigen. Pas
+daarnaast de bijbehorende `value`-attributen in `index.html` aan wanneer de invoervelden
+direct met dezelfde nieuwe waarden moeten starten.
 
 ## Lokaal openen
 
@@ -112,6 +109,18 @@ Vervang de voorbeeld-URL door de URL van je eigen repository.
 6. Klik op **Deploy**.
 
 Vercel publiceert de statische bestanden automatisch. Elke nieuwe push naar de hoofdbranch kan daarna automatisch worden uitgerold.
+
+Publiceer de bestanden `index.html`, `styles.css`, `app.js`, `favicon.svg`, `robots.txt`,
+`vercel.json`, `.gitignore` en `README.md`. De lokale mappen `outputs` en `work` worden via
+`.gitignore` niet gepubliceerd.
+
+## Eigen domein en Google
+
+1. Voeg na de eerste Vercel-publicatie je eigen domein toe via **Project Settings → Domains**.
+2. Stel daarna in `index.html` een canonical URL en `og:url` in met je definitieve domein.
+3. Voeg de website toe aan [Google Search Console](https://search.google.com/search-console).
+4. Vraag in Search Console indexering van de homepage aan.
+5. Gebruik Vercel Analytics of een vergelijkbare dienst voor echte bezoekersstatistieken.
 
 ## Disclaimer
 

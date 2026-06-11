@@ -7,12 +7,37 @@
       name="description"
       content="Bereken wat elektrisch rijden kost per maand, per jaar en per 100 km. Vergelijk laadkosten direct met benzine."
     >
+    <meta name="robots" content="index, follow">
+    <meta property="og:locale" content="nl_NL">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EV Bespaarcheck | Wat kost elektrisch rijden?">
+    <meta property="og:description" content="Bereken laadkosten en vergelijk elektrisch rijden direct met benzine.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="EV Bespaarcheck | Wat kost elektrisch rijden?">
+    <meta name="twitter:description" content="Bereken laadkosten en vergelijk elektrisch rijden direct met benzine.">
     <meta name="theme-color" content="#09233f">
     <title>EV Bespaarcheck | Wat kost elektrisch rijden?</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="styles.css">
     <script src="app.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "EV Bespaarcheck",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "nl-NL",
+        "description": "Calculator voor laadkosten, besparing ten opzichte van benzine en rijbereik op zonnepanelen."
+      }
+    </script>
   </head>
   <body>
+    <noscript>
+      <div class="noscript-notice">
+        EV Bespaarcheck heeft JavaScript nodig om berekeningen uit te voeren. Schakel JavaScript in en vernieuw de pagina.
+      </div>
+    </noscript>
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="#top" aria-label="EV Bespaarcheck home">
@@ -310,8 +335,8 @@
                 </div>
 
                 <div class="result-grid">
-                  <article class="result-item"><span>Kosten per jaar</span><strong id="cost-year">€ 1.007,33</strong></article>
-                  <article class="result-item"><span>Kosten per 100 km</span><strong id="cost-100">€ 6,81</strong></article>
+                  <article class="result-item"><span>Kosten per jaar</span><strong id="cost-year">€ 1.007</strong></article>
+                  <article class="result-item"><span>Kosten per 100 km</span><strong id="cost-100">€ 7</strong></article>
                   <article class="result-item"><span>Benzine per jaar</span><strong id="fuel-year">€ 1.999</strong></article>
                   <article class="result-item"><span>Besparing per maand</span><strong id="saving-month">€ 116</strong></article>
                   <article class="result-item"><span>kWh per jaar</span><strong id="kwh-year">2.723 kWh</strong></article>
@@ -323,9 +348,9 @@
                 <h3>Opbouw laadkosten</h3>
                 <p>Een eenvoudig overzicht van waar je jaarlijkse laadkosten ontstaan.</p>
                 <div class="cost-breakdown" aria-label="Opbouw jaarlijkse laadkosten">
-                  <div><span>Thuisladen</span><strong id="home-cost-year">€ 653,40</strong></div>
-                  <div><span>Snelladen</span><strong id="fast-cost-year">€ 353,93</strong></div>
-                  <div class="breakdown-total"><span>Totale laadkosten</span><strong id="economic-total-year">€ 1.007,33</strong></div>
+                  <div><span>Thuisladen</span><strong id="home-cost-year">€ 653</strong></div>
+                  <div><span>Snelladen</span><strong id="fast-cost-year">€ 354</strong></div>
+                  <div class="breakdown-total"><span>Totale laadkosten</span><strong id="economic-total-year">€ 1.007</strong></div>
                 </div>
                 <p class="cost-consistency-note">Thuisladen + snelladen is altijd exact gelijk aan de totale laadkosten.</p>
               </section>
@@ -334,7 +359,7 @@
                 <h3>EV vs benzine</h3>
                 <p>Jaarlijkse energiekosten</p>
                 <div class="bar-group">
-                  <div class="bar-label"><span>Elektrisch</span><strong id="bar-ev-label">€ 1.007,33</strong></div>
+                  <div class="bar-label"><span>Elektrisch</span><strong id="bar-ev-label">€ 1.007</strong></div>
                   <div class="bar-track"><span id="bar-ev" class="bar ev-bar"></span></div>
                 </div>
                 <div class="bar-group">
@@ -346,7 +371,7 @@
               <section id="conclusion" class="conclusion-card">
                 <span class="conclusion-icon" aria-hidden="true">✓</span>
                 <p id="conclusion-text">
-                  Op basis van jouw invoer kost elektrisch rijden € 1.007,33 per jaar,
+                  Op basis van jouw invoer kost elektrisch rijden € 1.007 per jaar,
                   ongeveer € 84 per maand. Vergeleken met benzine bespaar je ongeveer € 991 per jaar.
                 </p>
               </section>
@@ -386,7 +411,7 @@
                     <span>Hoeveel zonnestroom wil je voor de auto gebruiken?</span>
                     <strong id="solar-to-car-label">35%</strong>
                   </div>
-                  <input id="solar-to-car-percentage" class="charging-range" type="range" min="0" max="100" step="5" value="35">
+                  <input id="solar-to-car-percentage" class="charging-range" type="range" min="0" max="100" step="5" value="35" aria-label="Percentage zonnestroom voor de auto">
                   <div class="charging-range-labels"><span>Een klein deel</span><span>Zoveel mogelijk</span></div>
                 </div>
               </div>
@@ -397,7 +422,7 @@
                 <input id="solar-car-consumption" type="hidden" value="16.5">
               </div>
             </form>
-            <div class="standalone-results-card solar-theme simple-solar-result">
+            <div class="standalone-results-card solar-theme simple-solar-result" aria-live="polite">
               <span class="insight-icon sun" aria-hidden="true">☀</span>
               <span class="simple-result-label">Je rijdt ongeveer</span>
               <strong id="solar-range-year" class="simple-result-value">7.753 km</strong>
@@ -425,7 +450,7 @@
             <article class="insight-card">
               <span class="insight-icon sun" aria-hidden="true">☀</span>
               <h3>Laden met zonnepanelen</h3>
-              <p>Gebruik je zonne-overschot voor de auto en vergelijk de gemiste terugleververgoeding met laden uit het net.</p>
+              <p>Bereken hoeveel kilometer je elektrische auto kan rijden op de jaarlijkse opbrengst van je zonnepanelen.</p>
               <a href="#zonnepanelen">Bereken je rijbereik <span>→</span></a>
             </article>
             <article id="slim-laden" class="insight-card">

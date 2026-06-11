@@ -35,6 +35,15 @@ body {
   line-height: 1.6;
 }
 
+.noscript-notice {
+  padding: 12px 18px;
+  color: #fff;
+  text-align: center;
+  background: #a13f3f;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
 button,
 input {
   font: inherit;
@@ -48,6 +57,11 @@ a {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--green-500);
+  outline-offset: 3px;
 }
 
 h1,
@@ -153,6 +167,13 @@ strong {
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   cursor: pointer;
+}
+
+.menu-button:focus-visible,
+.charging-preset:focus-visible,
+.primary-button:focus-visible,
+.secondary-button:focus-visible {
+  outline-color: #66e0b3;
 }
 
 .menu-button span:not(.sr-only) {

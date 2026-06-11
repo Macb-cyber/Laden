@@ -111,6 +111,39 @@ const evDatabase = [
   { brand: "Mini", model: "Cooper", version: "SE", consumption: 15, battery: 49 },
   { brand: "Mini", model: "Countryman", version: "E", consumption: 17, battery: 64 },
   { brand: "Mini", model: "Countryman", version: "SE ALL4", consumption: 18.5, battery: 64 },
+  { brand: "Tesla", model: "Model 3 Highland", version: "RWD", consumption: 14.5, battery: 60 },
+  { brand: "Tesla", model: "Model 3 Highland", version: "Long Range", consumption: 15.5, battery: 75 },
+  { brand: "Tesla", model: "Model 3 Highland", version: "Performance", consumption: 17, battery: 75 },
+  { brand: "Tesla", model: "Model Y Juniper", version: "RWD", consumption: 15.5, battery: 60 },
+  { brand: "Tesla", model: "Model Y Juniper", version: "Long Range", consumption: 16.5, battery: 75 },
+  { brand: "Dacia", model: "Spring", version: "Essential 45", consumption: 13.9, battery: 26.8 },
+  { brand: "Dacia", model: "Spring", version: "Expression 65", consumption: 14.6, battery: 26.8 },
+  { brand: "Citroën", model: "ë-C3", version: "Standard", consumption: 16.7, battery: 44 },
+  { brand: "Ford", model: "Explorer Electric", version: "Standard Range RWD", consumption: 16.7, battery: 52 },
+  { brand: "Ford", model: "Explorer Electric", version: "Extended Range RWD", consumption: 15.7, battery: 77 },
+  { brand: "Ford", model: "Explorer Electric", version: "Extended Range AWD", consumption: 17.2, battery: 79 },
+  { brand: "Ford", model: "Mustang Mach-E", version: "Standard Range RWD", consumption: 17.3, battery: 72.6 },
+  { brand: "Ford", model: "Mustang Mach-E", version: "Extended Range RWD", consumption: 17.3, battery: 91 },
+  { brand: "Ford", model: "Mustang Mach-E", version: "Extended Range AWD", consumption: 19.5, battery: 91 },
+  { brand: "Toyota", model: "bZ4X", version: "FWD", consumption: 16.7, battery: 64 },
+  { brand: "Toyota", model: "bZ4X", version: "AWD", consumption: 18, battery: 64 },
+  { brand: "Subaru", model: "Solterra", version: "AWD", consumption: 18.1, battery: 64 },
+  { brand: "Smart", model: "#1", version: "Pro+", consumption: 16.8, battery: 62 },
+  { brand: "Smart", model: "#1", version: "Premium", consumption: 16.8, battery: 62 },
+  { brand: "Smart", model: "#1", version: "Brabus", consumption: 18.2, battery: 62 },
+  { brand: "Smart", model: "#3", version: "Pro+", consumption: 16.3, battery: 62 },
+  { brand: "Smart", model: "#3", version: "Premium", consumption: 16.3, battery: 62 },
+  { brand: "Smart", model: "#3", version: "Brabus", consumption: 17.6, battery: 62 },
+  { brand: "Cupra", model: "Born", version: "59 kWh", consumption: 15.5, battery: 59 },
+  { brand: "Cupra", model: "Born", version: "77 kWh", consumption: 15.7, battery: 77 },
+  { brand: "Cupra", model: "Born", version: "VZ", consumption: 17.2, battery: 79 },
+  { brand: "Cupra", model: "Tavascan", version: "Endurance", consumption: 16.5, battery: 77 },
+  { brand: "Cupra", model: "Tavascan", version: "VZ", consumption: 18.5, battery: 77 },
+  { brand: "XPeng", model: "G6", version: "Standard Range", consumption: 17.5, battery: 66 },
+  { brand: "XPeng", model: "G6", version: "Long Range", consumption: 17.5, battery: 87.5 },
+  { brand: "XPeng", model: "G6", version: "Performance AWD", consumption: 19, battery: 87.5 },
+  { brand: "Leapmotor", model: "T03", version: "Standard", consumption: 16.3, battery: 37.3 },
+  { brand: "Leapmotor", model: "C10", version: "Standard", consumption: 19.8, battery: 69.9 },
 ];
 
 const defaults = {
@@ -201,13 +234,6 @@ const euroWhole = new Intl.NumberFormat("nl-NL", {
   maximumFractionDigits: 0,
 });
 
-const euroDetailed = new Intl.NumberFormat("nl-NL", {
-  style: "currency",
-  currency: "EUR",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-});
-
 const wholeNumber = new Intl.NumberFormat("nl-NL", {
   maximumFractionDigits: 0,
 });
@@ -275,14 +301,14 @@ function setText(element, text) {
 }
 
 function getDisplayedChargingCosts(results) {
-  const totalCents = Math.round(results.totalEvCost * 100);
-  const homeCents = Math.round(results.homeChargingCost * 100);
-  const fastCents = totalCents - homeCents;
+  const totalEuros = Math.round(results.totalEvCost);
+  const homeEuros = Math.round(results.homeChargingCost);
+  const fastEuros = totalEuros - homeEuros;
 
   return {
-    total: totalCents / 100,
-    home: homeCents / 100,
-    fast: fastCents / 100,
+    total: totalEuros,
+    home: homeEuros,
+    fast: fastEuros,
   };
 }
 
@@ -305,18 +331,18 @@ function renderResults(results) {
   const displayedTotalEvCost = displayedChargingCosts.total;
 
   setText(output.costMonth, euroWhole.format(results.monthlyCost));
-  setText(output.costYear, euroDetailed.format(displayedTotalEvCost));
-  setText(output.cost100, euroDetailed.format(results.costPer100Km));
+  setText(output.costYear, euroWhole.format(displayedTotalEvCost));
+  setText(output.cost100, euroWhole.format(results.costPer100Km));
   setText(output.fuelYear, euroWhole.format(results.yearlyFuelCost));
   setText(output.savingYear, euroWhole.format(results.yearlySaving));
   setText(output.savingMonth, euroWhole.format(results.monthlySaving));
   setText(output.kwhYear, `${wholeNumber.format(results.totalKwhWithLoss)} kWh`);
   setText(output.chargesYear, wholeNumber.format(results.chargesPerYear));
-  setText(output.homeCostYear, euroDetailed.format(displayedChargingCosts.home));
-  setText(output.fastCostYear, euroDetailed.format(displayedChargingCosts.fast));
-  setText(output.economicTotalYear, euroDetailed.format(displayedTotalEvCost));
+  setText(output.homeCostYear, euroWhole.format(displayedChargingCosts.home));
+  setText(output.fastCostYear, euroWhole.format(displayedChargingCosts.fast));
+  setText(output.economicTotalYear, euroWhole.format(displayedTotalEvCost));
   updateSolarInputsFromMainCalculator(results);
-  setText(output.barEvLabel, euroDetailed.format(displayedTotalEvCost));
+  setText(output.barEvLabel, euroWhole.format(displayedTotalEvCost));
   setText(output.barFuelLabel, euroWhole.format(results.yearlyFuelCost));
   setText(output.heroSaving, euroWhole.format(results.yearlySaving));
 
@@ -332,7 +358,7 @@ function renderResults(results) {
 
   setText(
     output.conclusionText,
-    `Op basis van jouw invoer kost elektrisch rijden ${euroDetailed.format(displayedTotalEvCost)} per jaar, ongeveer ${euroWhole.format(results.monthlyCost)} per maand. ${comparisonText}`,
+    `Op basis van jouw invoer kost elektrisch rijden ${euroWhole.format(displayedTotalEvCost)} per jaar, ongeveer ${euroWhole.format(results.monthlyCost)} per maand. ${comparisonText}`,
   );
 }
 
