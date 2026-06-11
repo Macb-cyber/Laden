@@ -206,7 +206,6 @@ const customCarBrand = document.querySelector("#custom-car-brand");
 const customCarModel = document.querySelector("#custom-car-model");
 const customCarTrim = document.querySelector("#custom-car-trim");
 const selectedCarName = document.querySelector("#selected-car-name");
-const vehicleDatabaseStatus = document.querySelector("#vehicle-database-status");
 const homePercentageLabel = document.querySelector("#home-percentage-label");
 const fastPercentageLabel = document.querySelector("#fast-percentage-label");
 const chargingPresets = document.querySelectorAll(".charging-preset");
@@ -449,7 +448,6 @@ function setSelectOptions(select, options, placeholder) {
 function populateBrands() {
   const brands = uniqueSorted(evDatabase.map((car) => car.brand));
   setSelectOptions(carBrand, brands, "Kies een merk");
-  vehicleDatabaseStatus.textContent = `${evDatabase.length} uitvoeringen van ${brands.length} merken beschikbaar`;
 }
 
 function populateModels(selectedBrand) {
