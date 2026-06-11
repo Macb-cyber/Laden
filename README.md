@@ -26,6 +26,20 @@ De website gebruikt alleen HTML, CSS en JavaScript. Er is geen backend, framewor
 De autodatabase staat als de array `evDatabase` bovenaan in `app.js` en kan daar eenvoudig
 worden uitgebreid.
 
+## Juridische en vertrouwenspagina's
+
+De website bevat aparte pagina's voor privacy, contact, informatie over EV Bespaarcheck en
+de disclaimer:
+
+- `privacy.html`: legt uit dat berekeningen lokaal in de browser plaatsvinden en beschrijft
+  het cookiebeleid;
+- `contact.html`: bevat het contactadres voor vragen, opmerkingen en gemelde rekenfouten;
+- `over.html`: legt uit wat EV Bespaarcheck doet;
+- `disclaimer.html`: licht toe dat alle berekeningen indicatief zijn en geen financieel
+  advies vormen.
+
+Deze pagina's gebruiken dezelfde header, footer en vormgeving als de homepage.
+
 ## Nieuwe auto's toevoegen
 
 Nieuwe auto's voeg je bovenaan in `app.js` toe aan de array `evDatabase`. Voeg voor iedere
@@ -110,9 +124,10 @@ Vervang de voorbeeld-URL door de URL van je eigen repository.
 
 Vercel publiceert de statische bestanden automatisch. Elke nieuwe push naar de hoofdbranch kan daarna automatisch worden uitgerold.
 
-Publiceer de bestanden `index.html`, `styles.css`, `app.js`, `favicon.svg`, `robots.txt`,
-`vercel.json`, `.gitignore` en `README.md`. De lokale mappen `outputs` en `work` worden via
-`.gitignore` niet gepubliceerd.
+Publiceer de bestanden `index.html`, `privacy.html`, `contact.html`, `over.html`,
+`disclaimer.html`, `styles.css`, `app.js`, `favicon.svg`, `robots.txt`, `vercel.json`,
+`.gitignore` en `README.md`. De lokale mappen `outputs` en `work` worden via `.gitignore`
+niet gepubliceerd.
 
 ## Eigen domein en Google
 
